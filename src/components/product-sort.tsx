@@ -35,7 +35,7 @@ const router = useRouter()
         <SelectTrigger className="sm:w-[180px]">
           <SelectValue placeholder="Sort By" />
         </SelectTrigger>
-        <SelectContent>
+        <SelectContent >
           {sortOptions.map((option) => (
             <SelectItem key={option.value} value={option.value}>
               {option.name}

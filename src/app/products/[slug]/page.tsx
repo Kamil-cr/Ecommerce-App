@@ -11,6 +11,19 @@ interface Props {
   }
 }
 
+// export const generateStaticParams = async ({params}: Props) => {
+//   return await client.fetch(groq`*[_type == "product"]${params.slug}`)
+// }
+
+// export async function getStaticPaths() {
+//   const products = await client.fetch(groq`*[_type == "product"]{ "slug": slug.current }`)
+//   const paths = products.map((product: any) => ({
+//     params: { slug: product.slug },
+//   }))
+
+//   return { paths, fallback: false }
+// }
+
 export default async function Page({params}: Props) {
   const product = await client.fetch<SanityProduct>(
     groq`*[_type == "product" && slug.current == "${params.slug}"][0]{
