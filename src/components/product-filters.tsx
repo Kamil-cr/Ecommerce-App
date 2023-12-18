@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation"
 
+
 import {
   Accordion,
   AccordionContent,
@@ -50,7 +51,7 @@ const filters = [
 export function ProductFilters() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const searchValues = searchParams? Array.from(searchParams.entries()) : []
+  const searchValues = searchParams ? Array.from(searchParams.entries()) : [];
 
   return (
     <form className="sticky top-20">
@@ -63,7 +64,7 @@ export function ProductFilters() {
               <span>
                 {section.name}{" "}
                 <span className="ml-1 text-xs font-extrabold uppercase text-gray-400">
-                  {searchParams ? (searchParams.get(section.id) ? `(${searchParams.get(section.id)})` : "") : ""}
+                  {searchParams && searchParams.get(section.id) ? `(${searchParams.get(section.id)})` : ""}
                 </span>
               </span>
             </AccordionTrigger>
@@ -78,7 +79,7 @@ export function ProductFilters() {
                       id={`filter-${section.id}-${optionid}`}
                       checked={searchValues.some(([key, value]) => key === section.id && value === option.value)}
                       onClick={(event) => {
-                      const params = searchParams ? new URLSearchParams(searchParams) : new URLSearchParams();
+                      const params = new URLSearchParams(searchParams || '');
                       const checked = event.currentTarget.dataset.state === "checked"
                       checked ? params.delete(section.id) : params.set(section.id, option.value)
                       router.replace(`/?${params.toString()}`)

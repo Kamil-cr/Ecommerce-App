@@ -22,7 +22,7 @@ export function SiteFooter() {
           href="https://www.fullstack.so"
           className="mt-10 block text-center text-xs leading-5"
         >
-          &copy; {new Date().getFullYear()} {siteConfig.name} LLC. All rights
+          &copy; {new Date().getFullYear()} {siteConfig.title} LLC. All rights
           reserved.
         </Link>
       </div>
